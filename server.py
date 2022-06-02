@@ -1,9 +1,8 @@
-import socket   
+import socket
 import threading
 
-
-host = '127.0.0.1'
-port = 55555
+host = 'localhost'
+port = 3000
 
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
@@ -11,14 +10,15 @@ server.bind((host, port))
 server.listen()
 print(f"Server running on {host}:{port}")
 
-
 clients = []
 usernames = []
+
 
 def broadcast(message, _client):
     for client in clients:
         if client != _client:
             client.send(message)
+
 
 def handle_messages(client):
     while True:
@@ -54,5 +54,5 @@ def receive_connections():
         thread = threading.Thread(target=handle_messages, args=(client,))
         thread.start()
 
-receive_connections()
 
+receive_connections()

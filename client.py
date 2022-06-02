@@ -1,10 +1,10 @@
-import socket   
+import socket
 import threading
 
 username = input("Enter your username: ")
 
-host = '127.0.0.1'
-port = 55555
+host = 'localhost'
+port = 3000
 
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 client.connect((host, port))
@@ -21,13 +21,15 @@ def receive_messages():
                 print(message)
         except:
             print("An error Ocurred")
-            client.close
+            client.close()
             break
+
 
 def write_messages():
     while True:
         message = f"{username}: {input('')}"
         client.send(message.encode('utf-8'))
+
 
 receive_thread = threading.Thread(target=receive_messages)
 receive_thread.start()
