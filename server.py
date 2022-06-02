@@ -28,7 +28,7 @@ def handle_messages(client):
         except:
             index = clients.index(client)
             username = usernames[index]
-            broadcast(f"ChatBot: {username} disconnected".encode('utf-8'), client)
+            broadcast(f"{username} has disconnected from the chat!".encode('utf-8'), client)
             clients.remove(client)
             usernames.remove(username)
             client.close()
@@ -47,7 +47,7 @@ def receive_connections():
 
         print(f"{username} is connected with {str(address)}")
 
-        message = f"ChatBot: {username} joined the chat!".encode("utf-8")
+        message = f"{username} has joined the chat!".encode("utf-8")
         broadcast(message, client)
         client.send("Connected to server".encode("utf-8"))
 

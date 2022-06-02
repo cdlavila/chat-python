@@ -20,7 +20,7 @@ def receive_messages():
             else:
                 print(message)
         except:
-            print("An error Ocurred")
+            print("An error Occurred")
             client.close()
             break
 
