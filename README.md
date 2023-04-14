@@ -1,2 +1,2 @@
-# chat-python
-TCP Chat using Python, Socket and Threading.
+# Chat
+Chat with TCP using Python, Socket and Threading.
